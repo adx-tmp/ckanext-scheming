@@ -4,6 +4,7 @@ from ckanapi import LocalCKAN
 
 @pytest.mark.usefixtures(u'clean_db')
 @pytest.mark.usefixtures(u'clean_index')
+@pytest.mark.usefixtures(u'with_plugins')
 class TestAutoCreateValidName(object):
     def test_prevents_duplicates(self):
         lc = LocalCKAN()
@@ -45,6 +46,7 @@ class TestAutoCreateValidName(object):
 
 @pytest.mark.usefixtures(u'clean_db')
 @pytest.mark.usefixtures(u'clean_index')
+@pytest.mark.usefixtures(u'with_plugins')
 class TestAutofill(object):
     def test_autofilling(self):
         lc = LocalCKAN()
