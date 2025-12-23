@@ -20,13 +20,21 @@ from ckan.plugins.toolkit import (
 
 import ckanext.scheming.helpers as sh
 from ckanext.scheming.errors import SchemingException
+from ckanext.scheming.decorators import scheming_validator
+from ckanext.scheming import unaids_validators
 
 OneOf = get_validator('OneOf')
 ignore_missing = get_validator('ignore_missing')
 not_empty = get_validator('not_empty')
 unicode_safe = get_validator('unicode_safe')
 
-all_validators = {}
+all_validators = {
+    'autogenerate': unaids_validators.autogenerate,
+    'unique_combination': unaids_validators.unique_combination,
+    'auto_create_valid_name': unaids_validators.auto_create_valid_name,
+    'scheming_shapefile': unaids_validators.scheming_shapefile,
+    'autofill': unaids_validators.autofill
+}
 
 
 def register_validator(fn):
@@ -34,17 +42,6 @@ def register_validator(fn):
     collect validator functions into ckanext.scheming.all_helpers dict
     """
     all_validators[fn.__name__] = fn
-    return fn
-
-
-def scheming_validator(fn):
-    """
-    Decorate a validator that needs to have the scheming fields
-    passed with this function. When generating navl validator lists
-    the function decorated will be called passing the field
-    and complete schema to produce the actual validator for each field.
-    """
-    fn.is_a_scheming_validator = True
     return fn
 
 
@@ -407,7 +404,7 @@ def get_validator_or_converter(name):
     Get a validator or converter by name
     """
     if name == 'unicode':
-        return six.text_type
+        return unicode_safe 
     try:
         v = get_validator(name)
         return v

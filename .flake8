@@ -1,0 +1,23 @@
+[flake8]
+# Exclude directories that shouldn't be linted
+exclude =
+    .venv
+    .git
+    __pycache__
+    *.egg-info
+    build
+    dist
+    ckan
+    .pytest_cache
+
+# Match the CI checks
+select = E901,E999,F821,F822,F823
+
+# Show source code for errors
+show-source = True
+
+# Count errors
+count = True
+
+# Show statistics
+statistics = True
