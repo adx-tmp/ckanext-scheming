@@ -34,5 +34,6 @@
             "label": "Year",
             "field_name": "year"
         }
-    ]
+    ],
+    "resource_fields": []
 }

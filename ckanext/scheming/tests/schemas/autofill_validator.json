@@ -40,5 +40,6 @@
             "default": "data-type",
             "validators": "autofill"
         }
-    ]
+    ],
+    "resource_fields": []
 }
