@@ -37,6 +37,8 @@ from ckan.plugins.toolkit import (
 )
 
 from ckanext.scheming import helpers, validation, logic, loader, views
+from ckanext.scheming import unaids_validators
+from ckanext.scheming import unaids_helpers
 from ckanext.scheming.errors import SchemingException
 
 ignore_missing = get_validator('ignore_missing')

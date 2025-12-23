@@ -29,6 +29,8 @@ setup(
         'ckanapi',
         'pytz',
         'six',
+        'pycountry==19.8.18',
+        'python-slugify==4.0.0',
     ],
     entry_points=\
     """
