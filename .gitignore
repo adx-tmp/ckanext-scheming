@@ -4,3 +4,21 @@ links/*
 build/*
 dist/*
 .eggs/*
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+test_results_new.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
